@@ -1,187 +1,140 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات تصميم المواقع الإلكترونية - تواصل عبر واتساب</title>
-    
-    <!-- Google Fonts: Instrument Sans, Instrument Serif & Cairo for crisp Arabic typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Cairo"', '"Instrument Sans"', 'sans-serif'],
-                        serif: ['"Instrument Serif"', 'serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- HLS.js for video streaming -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
-    
-    <!-- Optimized Arabic Font Rendering and Smooth Antialiasing Styles -->
+    <title>تصميم المواقع الإلكترونية الفاخرة - تواصل عبر واتساب</title>
+    <!-- استيراد خطوط فخمة وعصرية (Cinzel للعناوين و Tajawal للنصوص العربية) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
+            font-family: 'Tajawal', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .font-heading {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
         }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        .font-body {
+            font-family: 'Tajawal', sans-serif;
         }
-        .animate-fade-in {
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+        /* تأثيرات Liquid Glass الفاخرة */
+        .liquid-glass-strong {
+            background: rgba(255, 255, 255, 0.01);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+            border: none;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
         }
-        .animate-scale-in {
-            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-            opacity: 0;
-        }
-        .animate-fade-delay-1 {
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-            opacity: 0;
-        }
-        .animate-fade-delay-2 {
-            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-            opacity: 0;
+
+        .liquid-glass-strong::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.4px;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.5) 0%,
+                rgba(255, 255, 255, 0.2) 20%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0.2) 80%,
+                rgba(255, 255, 255, 0.5) 100%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<body>
 
-    <!-- Navbar Component (RTL layout: Logo on right, Links & CTA on left) -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between backdrop-blur-md border-b border-white/5">
-        
-        <!-- Right Section: Logo & Brand Name -->
-        <div class="flex items-center gap-3">
-            <svg class="w-6 h-6 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-            </svg>
-            <span class="font-bold text-lg tracking-wider text-white">تصميم المواقع</span>
-        </div>
+    <section class="relative py-32 px-6 md:px-16 lg:px-24 text-center overflow-hidden min-h-screen flex flex-col justify-between">
+        <!-- Background HLS Video -->
+        <video
+            id="hls-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            class="absolute inset-0 w-full h-full object-cover z-0"
+        ></video>
 
-        <!-- Center Navigation Links (Hidden on mobile, visible on md) -->
-        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
-            <a href="#services" class="hover:text-white transition-colors">الخدمات</a>
-            <a href="#features" class="hover:text-white transition-colors">المميزات</a>
-            <a href="#contact" class="hover:text-white transition-colors">تواصل مباشر</a>
-        </div>
+        <!-- Top fade -->
+        <div
+            class="absolute top-0 left-0 right-0 z-[1] pointer-events-none"
+            style="height: 200px; background: linear-gradient(to bottom, black, transparent);"
+        ></div>
+        <!-- Bottom fade -->
+        <div
+            class="absolute bottom-0 left-0 right-0 z-[1] pointer-events-none"
+            style="height: 200px; background: linear-gradient(to top, black, transparent);"
+        ></div>
 
-        <!-- Left Section: Primary CTA Button -->
-        <div class="flex items-center gap-4">
-            <a href="https://wa.me/966569500870?text=مرحباً، أرغب في طلب تصميم موقع إلكتروني جديد." target="_blank" class="bg-white text-black rounded-full px-6 py-2.5 font-bold text-sm hover:bg-neutral-200 transition-all shadow-lg hover:shadow-white/20 transform hover:-translate-y-0.5">
-                ابدأ الآن
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section Component -->
-    <header class="relative w-full min-h-screen bg-black text-white overflow-hidden flex flex-col items-center justify-center pt-28 pb-16 px-4 text-center">
-        
-        <!-- Background Video Layer -->
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <video 
-                id="hero-video"
-                class="w-full h-full object-cover opacity-60 scale-105"
-                muted 
-                loop 
-                playsinline 
-                poster="https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080">
-            </video>
-            <!-- Dark Overlay with subtle blur -->
-            <div class="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
-        </div>
-
-        <!-- Decorative Gradients -->
-        <div class="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-blue-900/20 blur-[120px] mix-blend-screen pointer-events-none rounded-full"></div>
-        <div class="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] bg-indigo-900/20 blur-[120px] mix-blend-screen pointer-events-none rounded-full"></div>
-
-        <!-- Content Container -->
-        <div class="relative z-10 max-w-5xl mx-auto space-y-8 flex flex-col items-center">
+        <!-- Content -->
+        <div class="relative z-10 my-auto">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white tracking-tight leading-[1.2] max-w-4xl mx-auto mb-6">
+                صمم موقعك باحترافية وتكامل رقمي فائق.
+            </h2>
+            <p class="text-white/60 font-body font-light text-base md:text-lg max-w-xl mx-auto mb-10">
+                تواصل معي مباشرة عبر واتساب لبدء مشروعك الرقمي. دقة عالية وسرعة فائقة لتنمية أعمالك على الإنترنت.
+            </p>
             
-            <!-- Pre-headline -->
-            <div class="animate-fade-in">
-                <h2 class="font-serif italic text-3xl sm:text-4xl lg:text-[42px] leading-[1.2] text-white/90">
-                    حوّل فكرتك إلى منصة رقمية متكاملة
-                </h2>
-            </div>
-
-            <!-- Main Headline -->
-            <div class="animate-scale-in">
-                <h1 class="font-bold text-5xl sm:text-7xl lg:text-[110px] leading-[1.05] tracking-tight bg-gradient-to-b from-white via-white to-[#b4c0ff] bg-clip-text text-transparent pb-2">
-                    صمم موقعك باحترافية
-                </h1>
-            </div>
-
-            <!-- Subheadline -->
-            <div class="animate-fade-delay-1 max-w-2xl mx-auto">
-                <p class="text-base sm:text-xl leading-[1.7] text-white/80 font-medium">
-                    نقدم خدمات تصميم وبرمجة المواقع والمتاجر الإلكترونية بدقة عالية وسرعة فائقة لتنمية أعمالك على الإنترنت.
-                </p>
-            </div>
-
-            <!-- CTA Buttons Container (Single Primary CTA Button as requested, secondary button removed) -->
-            <div class="animate-fade-delay-2 pt-4">
-                <a href="https://wa.me/966569500870?text=مرحباً، أرغب في طلب تصميم موقع إلكتروني جديد." target="_blank" class="group relative inline-flex items-center pl-8 pr-3 py-3.5 rounded-full bg-white text-[#0a0400] font-bold text-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-105 transition-all duration-300">
-                    <span class="ml-4 font-bold">ابدأ الآن عبر واتساب</span>
-                    <div class="w-10 h-10 rounded-full bg-[#25d366] group-hover:bg-[#20ba5a] flex items-center justify-center text-white transition-colors shadow-md">
-                        <!-- WhatsApp SVG Icon -->
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                        </svg>
-                    </div>
+            <div class="flex items-center justify-center gap-6 flex-wrap">
+                <!-- زر الواتساب الأول (Liquid Glass) -->
+                <a href="https://wa.me/966569500870?text=مرحباً، أرغب في طلب تصميم موقع إلكتروني احترافي." target="_blank" class="liquid-glass-strong rounded-full px-8 py-3.5 text-base font-medium text-white flex items-center gap-3 hover:bg-white/10 transition-all font-body">
+                    <span>تواصل عبر واتساب</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                </a>
+                
+                <!-- زر واتساب الثاني (Solid White) -->
+                <a href="https://wa.me/966569500870?text=مرحباً، أود الاستفسار عن أسعار وخدمات تصميم المواقع." target="_blank" class="bg-white text-black rounded-full px-8 py-3.5 text-base font-medium flex items-center gap-3 hover:bg-white/90 transition-colors font-body shadow-lg">
+                    <span>احصل على العرض</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
                 </a>
             </div>
-
         </div>
 
-        <!-- Floating WhatsApp Widget Button for Direct Access -->
-        <a href="https://wa.me/966569500870?text=مرحباً، تواصلت معك من خلال الموقع وأرغب في الاستفسار عن تصميم موقع." target="_blank" class="fixed bottom-6 left-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300" title="تواصل عبر واتساب">
-            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
-        </a>
+        <!-- Footer -->
+        <div class="relative z-10 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto w-full">
+            <p class="text-white/40 font-body font-light text-xs">
+                &copy; 2026 Studio. All rights reserved. واتساب: 0569500870
+            </p>
+            <div class="flex items-center gap-6">
+                <a href="https://wa.me/966569500870" target="_blank" class="text-white/40 hover:text-white/70 font-body font-light text-xs transition-colors">الخصوصية</a>
+                <a href="https://wa.me/966569500870" target="_blank" class="text-white/40 hover:text-white/70 font-body font-light text-xs transition-colors">الشروط</a>
+                <a href="https://wa.me/966569500870" target="_blank" class="text-white/40 hover:text-white/70 font-body font-light text-xs transition-colors">اتصل بنا</a>
+            </div>
+        </div>
+    </section>
 
-    </header>
-
-    <!-- HLS.js Video Initialization Script -->
+    <!-- تهيئة تشغيل فيديو HLS -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const video = document.getElementById('hero-video');
-            const videoSrc = "https://stream.mux.com/T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g.m3u8";
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById("hls-video");
+            const videoSrc = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
 
-            if (video) {
-                if (Hls.isSupported()) {
-                    const hls = new Hls();
-                    hls.loadSource(videoSrc);
-                    hls.attachMedia(video);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        video.play().catch((e) => console.log("Auto-play prevented:", e));
-                    });
-                } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-                    video.src = videoSrc;
-                    video.addEventListener("loadedmetadata", () => {
-                        video.play().catch((e) => console.log("Auto-play prevented:", e));
-                    });
-                }
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+            } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                video.src = videoSrc;
             }
         });
     </script>
