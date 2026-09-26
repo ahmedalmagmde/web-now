@@ -123,7 +123,46 @@
             } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
                 video.src = videoSrc;
             }
+
+            // تبديل اللغة
+            const langToggle = document.getElementById('langToggle');
+            langToggle.addEventListener('click', toggleLanguage);
+ 
+            // تحميل اللغة المحفوظة
+            const savedLang = localStorage.getItem('language') || 'ar';
+            if (savedLang === 'en') {
+                toggleLanguage();
+            }
         });
+ 
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('language', currentLang);
+ 
+            // تغيير اتجاه الصفحة
+            htmlElement.lang = currentLang;
+            htmlElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+ 
+            // تحديث جميع العناصر التي تحتوي على بيانات اللغة
+            document.querySelectorAll('[data-ar][data-en]').forEach(element => {
+                const text = currentLang === 'ar' ? element.dataset.ar : element.dataset.en;
+                
+                if (element.tagName === 'A' || element.tagName === 'BUTTON') {
+                    // للروابط والأزرار
+                    const span = element.querySelector('span');
+                    if (span) {
+                        span.textContent = text;
+                    }
+                } else {
+                    // للعناصر العادية
+                    element.textContent = text;
+                }
+            });
+ 
+            // تحديث زر التبديل
+            const langToggle = document.getElementById('langToggle');
+            langToggle.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+        }
     </script>
 </body>
 </html>
