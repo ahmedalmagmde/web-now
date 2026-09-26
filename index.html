@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Design | تصميم المواقع الإلكتروني </title>
+    <title>Web Design - Contact via WhatsApp | تصميم المواقع الإلكترونية</title>
     <!-- استيراد خطوط فخمة وعصرية (Cairo و Almarai) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -130,7 +130,8 @@
             position: relative;
         }
 
-        a::after {
+        /* التأثير الخطي فقط للروابط النصية وليس الأزرار */
+        a:not(.liquid-glass-strong):not(.bg-white)::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -142,7 +143,7 @@
             opacity: 0.5;
         }
 
-        a:hover::after {
+        a:not(.liquid-glass-strong):not(.bg-white):hover::after {
             width: 100%;
         }
 
