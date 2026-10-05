@@ -150,6 +150,15 @@
         video {
             animation: fadeInScale 1s ease-out 0.5s both;
         }
+
+        /* نافذة اختيار الرقم */
+        #waModal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+        #waModal.open{display:flex;animation:fadeInScale .3s ease-out}
+        .wa-box{width:100%;max-width:380px;border-radius:28px;padding:28px 24px;text-align:center;background:rgba(20,20,20,.7)}
+        .wa-box:hover{transform:none}
+        .wa-opt{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:999px;padding:14px 22px;margin-top:12px;color:#fff;font-family:'Almarai',sans-serif;font-weight:700;font-size:16px;cursor:pointer}
+        .wa-opt .num{direction:ltr;unicode-bidi:plaintext;opacity:.8;font-size:15px}
+        .wa-close{margin-top:18px;background:none;border:none;color:rgba(255,255,255,.55);font-family:'Almarai',sans-serif;cursor:pointer}
     </style>
 </head>
 <body>
@@ -194,7 +203,7 @@
             
             <div class="flex items-center justify-center gap-6 flex-wrap">
                 <!-- زر الواتساب الأول (Liquid Glass) -->
-                <a href="https://wa.me/966569500870?text=السلام عليكم ، أرغب في طلب تصميم موقع إلكتروني " target="_blank" class="liquid-glass-strong rounded-full px-8 py-3.5 text-lg font-bold text-white flex items-center gap-3 hover:bg-white/10 transition-all font-body" data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">
+                <a href="#" data-wa-text="السلام عليكم ، أرغب في طلب تصميم موقع إلكتروني" class="wa-trigger liquid-glass-strong rounded-full px-8 py-3.5 text-lg font-bold text-white flex items-center gap-3 hover:bg-white/10 transition-all font-body" data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">
                     <span>تواصل عبر واتساب</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
@@ -202,7 +211,7 @@
                 </a>
                 
                 <!-- زر واتساب الثاني (Solid White) -->
-                <a href="https://wa.me/966569500870?text=السلام عليكم، أود الاستفسار عن أسعار وخدمات تصميم المواقع لديكم ." target="_blank" class="bg-white text-black rounded-full px-8 py-3.5 text-lg font-bold flex items-center gap-3 hover:bg-white/90 transition-colors font-body shadow-lg" data-ar="احصل على العرض" data-en="Get the Offer">
+                <a href="#" data-wa-text="السلام عليكم، أود الاستفسار عن أسعار وخدمات تصميم المواقع لديكم." class="wa-trigger bg-white text-black rounded-full px-8 py-3.5 text-lg font-bold flex items-center gap-3 hover:bg-white/90 transition-colors font-body shadow-lg" data-ar="احصل على العرض" data-en="Get the Offer">
                     <span>احصل على العرض</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
@@ -210,6 +219,15 @@
                 </a>
             </div>
         </div>
+
+    <div id="waModal">
+        <div class="wa-box liquid-glass-strong">
+            <h3 class="font-heading text-2xl mb-1"><span data-ar="اختر رقم التواصل" data-en="Choose a number">اختر رقم التواصل</span></h3>
+            <button class="wa-opt liquid-glass-strong" data-num="966569500870"><span data-ar="الرقم الأول" data-en="First number">الرقم الأول</span><span class="num">0569500870</span></button>
+            <button class="wa-opt liquid-glass-strong" data-num="966557000349"><span data-ar="الرقم الثاني" data-en="Second number">الرقم الثاني</span><span class="num">0557000349</span></button>
+            <button class="wa-close" id="waClose"><span data-ar="إلغاء" data-en="Cancel">إلغاء</span></button>
+        </div>
+    </div>
 
     <!-- تهيئة تشغيل فيديو HLS وتبديل اللغة -->
     <script>
@@ -232,6 +250,21 @@
             // تبديل اللغة
             const langToggle = document.getElementById('langToggle');
             langToggle.addEventListener('click', toggleLanguage);
+
+            // اختيار رقم الواتساب
+            const modal = document.getElementById('waModal');
+            let waText = '';
+            document.querySelectorAll('.wa-trigger').forEach(a => a.addEventListener('click', e => {
+                e.preventDefault();
+                waText = a.dataset.waText;
+                modal.classList.add('open');
+            }));
+            modal.querySelectorAll('.wa-opt').forEach(b => b.addEventListener('click', () => {
+                window.open('https://wa.me/' + b.dataset.num + '?text=' + encodeURIComponent(waText), '_blank');
+                modal.classList.remove('open');
+            }));
+            document.getElementById('waClose').addEventListener('click', () => modal.classList.remove('open'));
+            modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
 
             // تحميل اللغة المحفوظة
             const savedLang = localStorage.getItem('language') || 'ar';
