@@ -7,7 +7,6 @@
     <!-- استيراد خطوط فخمة وعصرية (Cairo و Almarai) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
@@ -171,15 +170,18 @@
             </button>
         </div>
 
-        <!-- Background HLS Video -->
+        <!-- Background Video (fixed, covers the whole site) -->
         <video
-            id="hls-video"
-            autoPlay
+            id="bg-video"
+            autoplay
             loop
             muted
-            playsInline
-            class="absolute inset-0 w-full h-full object-cover z-0"
-        ></video>
+            playsinline
+            preload="auto"
+            class="fixed inset-0 w-full h-full object-cover z-0"
+        >
+            <source src="background.mp4" type="video/mp4">
+        </video>
 
         <!-- Top fade -->
         <div
@@ -236,16 +238,12 @@
 
         // تهيئة الفيديو
         document.addEventListener("DOMContentLoaded", () => {
-            const video = document.getElementById("hls-video");
-            const videoSrc = "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8";
-
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-                video.src = videoSrc;
-            }
+            const video = document.getElementById("bg-video");
+            video.muted = true;
+            const tryPlay = () => video.play().catch(() => {});
+            tryPlay();
+            document.addEventListener('touchstart', tryPlay, { once: true });
+            document.addEventListener('click', tryPlay, { once: true });
 
             // تبديل اللغة
             const langToggle = document.getElementById('langToggle');
