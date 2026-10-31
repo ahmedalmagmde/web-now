@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Design - Contact via WhatsApp | تصميم المواقع الإلكترونية</title>
-    <!-- استيراد خطوط فخمة وعصرية (Cairo و Almarai) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -24,7 +23,6 @@
             font-weight: 700;
         }
 
-        /* تأثيرات Liquid Glass الفاخرة */
         .liquid-glass-strong {
             background: rgba(255, 255, 255, 0.01);
             background-blend-mode: luminosity;
@@ -66,7 +64,6 @@
             pointer-events: none;
         }
 
-        /* حركات الظهور */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -129,7 +126,6 @@
             position: relative;
         }
 
-        /* التأثير الخطي فقط للروابط النصية وليس الأزرار */
         a:not(.liquid-glass-strong):not(.bg-white)::after {
             content: '';
             position: absolute;
@@ -150,7 +146,6 @@
             animation: fadeInScale 1s ease-out 0.5s both;
         }
 
-        /* نافذة اختيار الرقم */
         #waModal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
         #waModal.open{display:flex;animation:fadeInScale .3s ease-out}
         .wa-box{width:100%;max-width:380px;border-radius:28px;padding:28px 24px;text-align:center;background:rgba(20,20,20,.7)}
@@ -159,7 +154,6 @@
         .wa-opt .num{direction:ltr;unicode-bidi:plaintext;opacity:.8;font-size:15px}
         .wa-close{margin-top:18px;background:none;border:none;color:rgba(255,255,255,.55);font-family:'Almarai',sans-serif;cursor:pointer}
 
-        /* زر الصوت */
         #soundToggle{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:12px;border-radius:999px;padding:12px 22px;color:#fff;cursor:pointer;font-family:'Almarai',sans-serif;font-weight:700;font-size:14px;border:none;background:rgba(255,255,255,.01)}
         #soundToggle:hover{transform:translateX(-50%) translateY(-4px)}
         #soundToggle .eq{display:flex;align-items:flex-end;gap:3px;height:20px;position:relative}
@@ -175,7 +169,6 @@
         @keyframes eqBar{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
         @keyframes soundPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
 
-        /* شاشة الدخول (تفتح الصوت) */
         #soundGate{position:fixed;inset:0;z-index:90;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:rgba(0,0,0,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);cursor:pointer;text-align:center;padding:24px}
         #soundGate.show{display:flex;animation:fadeInScale .5s ease-out}
         #soundGate.hide{opacity:0;transition:opacity .6s ease;pointer-events:none}
@@ -192,14 +185,12 @@
 <body>
 
     <section class="relative py-32 px-6 md:px-16 lg:px-24 text-center overflow-hidden min-h-screen flex flex-col justify-between">
-        <!-- Language Toggle Button -->
         <div class="absolute top-8 left-8 z-20">
             <button id="langToggle" class="liquid-glass-strong rounded-full px-6 py-2 text-sm font-bold text-white hover:bg-white/10 transition-all">
                 English
             </button>
         </div>
 
-        <!-- Background Video (fixed, covers the whole site) -->
         <video
             id="bg-video"
             autoplay
@@ -212,18 +203,15 @@
             <source src="background.mp4" type="video/mp4">
         </video>
 
-        <!-- Top fade -->
         <div
             class="absolute top-0 left-0 right-0 z-[1] pointer-events-none"
             style="height: 200px; background: linear-gradient(to bottom, black, transparent);"
         ></div>
-        <!-- Bottom fade -->
         <div
             class="absolute bottom-0 left-0 right-0 z-[1] pointer-events-none"
             style="height: 200px; background: linear-gradient(to top, black, transparent);"
         ></div>
 
-        <!-- Content -->
         <div class="relative z-10 my-auto">
             <h2 class="text-5xl md:text-6xl lg:text-7xl font-heading text-white tracking-wide leading-[1.1] max-w-4xl mx-auto mb-6" data-ar="صمم موقعك باحترافية" data-en="Design Your Website Professionally">
                  صمم موقعك باحترافية
@@ -233,7 +221,6 @@
             </p>
             
             <div class="flex items-center justify-center gap-6 flex-wrap">
-                <!-- زر الواتساب الأول (Liquid Glass) -->
                 <a href="#" data-wa-text="السلام عليكم ، أرغب في طلب تصميم موقع إلكتروني" class="wa-trigger liquid-glass-strong rounded-full px-8 py-3.5 text-lg font-bold text-white flex items-center gap-3 hover:bg-white/10 transition-all font-body" data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">
                     <span>تواصل عبر واتساب</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,7 +228,6 @@
                     </svg>
                 </a>
                 
-                <!-- زر واتساب الثاني (Solid White) -->
                 <a href="#" data-wa-text="السلام عليكم، أود الاستفسار عن أسعار وخدمات تصميم المواقع لديكم." class="wa-trigger bg-white text-black rounded-full px-8 py-3.5 text-lg font-bold flex items-center gap-3 hover:bg-white/90 transition-colors font-body shadow-lg" data-ar="احصل على العرض" data-en="Get the Offer">
                     <span>احصل على العرض</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -253,13 +239,11 @@
 
     </section>
 
-    <!-- شاشة الدخول: ضغطة وحدة تشغّل الفيديو بالصوت -->
     <div id="soundGate" role="button" tabindex="0">
         <div class="gate-eq"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="gate-btn liquid-glass-strong"><span id="gateLabel">اضغط للدخول</span></div>
     </div>
 
-    <!-- زر تشغيل / إيقاف الصوت -->
     <button id="soundToggle" class="liquid-glass-strong" aria-label="تشغيل الصوت" type="button">
         <span class="eq"><i></i><i></i><i></i><i></i><i></i></span>
         <span id="soundLabel">تشغيل الصوت</span>
@@ -274,16 +258,13 @@
         </div>
     </div>
 
-    <!-- تهيئة تشغيل فيديو HLS وتبديل اللغة -->
     <script>
         let currentLang = 'ar';
         const htmlElement = document.documentElement;
 
-        // تهيئة الفيديو
         document.addEventListener("DOMContentLoaded", () => {
             const video = document.getElementById("bg-video");
 
-            // زر الصوت
             const soundBtn = document.getElementById('soundToggle');
             const soundLabel = document.getElementById('soundLabel');
             const labels = { ar: ['تشغيل الصوت', 'إيقاف الصوت'], en: ['Sound on', 'Sound off'] };
@@ -301,7 +282,6 @@
                 window.updateSoundLabel();
             });
 
-            // محاولة تشغيل الصوت أول ما يفتح الموقع
             const gate = document.getElementById('soundGate');
             const gateLabel = document.getElementById('gateLabel');
             const gateText = { ar: 'اضغط للدخول', en: 'Tap to enter' };
@@ -332,11 +312,9 @@
                 }, 400);
             }).catch(showGate);
 
-            // تبديل اللغة
             const langToggle = document.getElementById('langToggle');
             langToggle.addEventListener('click', toggleLanguage);
 
-            // اختيار رقم الواتساب
             const modal = document.getElementById('waModal');
             let waText = '';
             document.querySelectorAll('.wa-trigger').forEach(a => a.addEventListener('click', e => {
@@ -351,7 +329,6 @@
             document.getElementById('waClose').addEventListener('click', () => modal.classList.remove('open'));
             modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
 
-            // تحميل اللغة المحفوظة
             const savedLang = localStorage.getItem('language') || 'ar';
             if (savedLang === 'en') {
                 toggleLanguage();
@@ -362,27 +339,22 @@
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             localStorage.setItem('language', currentLang);
 
-            // تغيير اتجاه الصفحة
             htmlElement.lang = currentLang;
             htmlElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
-            // تحديث جميع العناصر التي تحتوي على بيانات اللغة
             document.querySelectorAll('[data-ar][data-en]').forEach(element => {
                 const text = currentLang === 'ar' ? element.dataset.ar : element.dataset.en;
                 
                 if (element.tagName === 'A' || element.tagName === 'BUTTON') {
-                    // للروابط والأزرار
                     const span = element.querySelector('span');
                     if (span) {
                         span.textContent = text;
                     }
                 } else {
-                    // للعناصر العادية
                     element.textContent = text;
                 }
             });
 
-            // تحديث زر التبديل
             const langToggle = document.getElementById('langToggle');
             langToggle.textContent = currentLang === 'ar' ? 'English' : 'العربية';
             if (window.updateSoundLabel) window.updateSoundLabel();
